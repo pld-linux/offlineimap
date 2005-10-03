@@ -8,8 +8,8 @@ Group:		Applications/Mail
 Source0:	http://gopher.quux.org:70/devel/offlineimap/%{name}_%{version}.tar.gz
 # Source0-md5:	41af0924d5e19480377616f4b1d059e1
 URL:		gopher://gopher.quux.org/1/devel/offlineimap
+BuildRequires:	python-devel
 #BuildRequires:	rpm-pythonprov >= 4.1-13
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,11 +27,15 @@ poor IMAP support, or does not provide disconnected operation.
 %prep
 %setup -q -n %{name}
 sed -i 's/env python2.3/python/' *.py
-%build
-%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+python ./setup.py install \
+	--optimize=2 \
+	--root=$RPM_BUILD_ROOT
+
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -type f -name "*.py" | xargs rm
+
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
@@ -44,3 +48,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README offlineimap.conf*
 %{_mandir}/man1/*
 %attr(755,root,root) %{_bindir}/*
+%{py_sitescriptdir}/%{name}

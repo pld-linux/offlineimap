@@ -9,7 +9,7 @@ Source0:	http://gopher.quux.org:70/devel/offlineimap/%{name}_%{version}.tar.gz
 # Source0-md5:	41af0924d5e19480377616f4b1d059e1
 URL:		gopher://gopher.quux.org/1/devel/offlineimap
 BuildRequires:	python-devel
-#BuildRequires:	rpm-pythonprov >= 4.1-13
+BuildRequires:	rpm-pythonprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,6 +23,15 @@ you want to use a mail reader that does not have IMAP support, has
 poor IMAP support, or does not provide disconnected operation.
 
 %description -l pl
+OfflineIMAP to narzêdzie upraszczaj±ce czytanie poczty elektronicznej.
+Za jego pomoc± mo¿na czytaæ t± sam± skrzynkê z wielu komputerów.
+Pobiera siê aktualn± kopiê wiadomo¶ci na ka¿dym komputerze, a zmiany
+dokonywane w jednym miejscu bêd± widoczne na wszystkich innych
+systemach. Na przyklad, mo¿na usun±æ wiadomo¶æ na swoim domowym
+komputerze i zostanie ona usuniêta tak¿e na komputerze w pracy.
+OfflineIMAP jest przydatne tak¿e je¶li chcemy u¿ywaæ czytnika poczty
+bez obs³ugi IMAP, z kiepsk± obs³ug± IMAP albo nie dzia³aj±cego bez
+po³±czenia.
 
 %prep
 %setup -q -n %{name}
@@ -46,6 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog README offlineimap.conf*
-%{_mandir}/man1/*
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/%{name}
+%{_mandir}/man1/*

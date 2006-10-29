@@ -1,12 +1,12 @@
 Summary:	Mailboxes synchronization tool
 Summary(pl):	Narzêdzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	4.0.11
-Release:	0.1
+Version:	4.0.12
+Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://gopher.quux.org:70/devel/offlineimap/%{name}_%{version}.tar.gz
-# Source0-md5:	41af0924d5e19480377616f4b1d059e1
+# Source0-md5:	aa2b67d3462cb1011f4577d7121eb72c
 URL:		gopher://gopher.quux.org/1/devel/offlineimap
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov >= 4.1-13

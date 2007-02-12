@@ -1,5 +1,5 @@
 Summary:	Mailboxes synchronization tool
-Summary(pl):	Narzêdzie do synchroniczacji skrzynek pocztowych
+Summary(pl.UTF-8):   NarzÄ™dzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
 Version:	4.0.12
 Release:	1
@@ -22,16 +22,16 @@ deleted on your work computer as well. OfflineIMAP is also useful if
 you want to use a mail reader that does not have IMAP support, has
 poor IMAP support, or does not provide disconnected operation.
 
-%description -l pl
-OfflineIMAP to narzêdzie upraszczaj±ce czytanie poczty elektronicznej.
-Za jego pomoc± mo¿na czytaæ t± sam± skrzynkê z wielu komputerów.
-Pobiera siê aktualn± kopiê wiadomo¶ci na ka¿dym komputerze, a zmiany
-dokonywane w jednym miejscu bêd± widoczne na wszystkich innych
-systemach. Na przyklad, mo¿na usun±æ wiadomo¶æ na swoim domowym
-komputerze i zostanie ona usuniêta tak¿e na komputerze w pracy.
-OfflineIMAP jest przydatne tak¿e je¶li chcemy u¿ywaæ czytnika poczty
-bez obs³ugi IMAP, z kiepsk± obs³ug± IMAP albo nie dzia³aj±cego bez
-po³±czenia.
+%description -l pl.UTF-8
+OfflineIMAP to narzÄ™dzie upraszczajÄ…ce czytanie poczty elektronicznej.
+Za jego pomocÄ… moÅ¼na czytaÄ‡ tÄ… samÄ… skrzynkÄ™ z wielu komputerÃ³w.
+Pobiera siÄ™ aktualnÄ… kopiÄ™ wiadomoÅ›ci na kaÅ¼dym komputerze, a zmiany
+dokonywane w jednym miejscu bÄ™dÄ… widoczne na wszystkich innych
+systemach. Na przyklad, moÅ¼na usunÄ…Ä‡ wiadomoÅ›Ä‡ na swoim domowym
+komputerze i zostanie ona usuniÄ™ta takÅ¼e na komputerze w pracy.
+OfflineIMAP jest przydatne takÅ¼e jeÅ›li chcemy uÅ¼ywaÄ‡ czytnika poczty
+bez obsÅ‚ugi IMAP, z kiepskÄ… obsÅ‚ugÄ… IMAP albo nie dziaÅ‚ajÄ…cego bez
+poÅ‚Ä…czenia.
 
 %prep
 %setup -q -n %{name}

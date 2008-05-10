@@ -1,13 +1,13 @@
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	4.0.12
+Version:	5.99.14
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
-Source0:	http://gopher.quux.org:70/devel/offlineimap/%{name}_%{version}.tar.gz
-# Source0-md5:	aa2b67d3462cb1011f4577d7121eb72c
-URL:		gopher://gopher.quux.org/1/devel/offlineimap
+Source0:	http://software.complete.org/software/versions/download/235?attachment_id=313
+# Source0-md5:	cac3fff4f1cc5cbd7acf5a544c13152c
+URL:		http://software.complete.org/software/projects/show/offlineimap
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,8 +45,7 @@ python ./setup.py install \
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -type f -name "*.py" | xargs rm
 
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
-install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install -d $RPM_BUILD_ROOT%{_bindir}
 install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
 
 %clean
@@ -54,7 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README offlineimap.conf*
+%doc README FAQ.html UPGRADING offlineimap.conf*
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/%{name}
-%{_mandir}/man1/*

@@ -1,12 +1,12 @@
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	5.99.14
+Version:	6.0.3
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
-Source0:	http://software.complete.org/software/versions/download/235?attachment_id=313
-# Source0-md5:	cac3fff4f1cc5cbd7acf5a544c13152c
+Source0:	http://software.complete.org/software/attachments/download/334/offlineimap_%{version}.tar.gz	
+# Source0-md5:	0c81d33e123c3d5b6645a68a809bcaef
 URL:		http://software.complete.org/software/projects/show/offlineimap
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov >= 4.1-13

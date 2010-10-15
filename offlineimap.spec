@@ -8,8 +8,8 @@ Group:		Applications/Mail
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	f73e7424afed76982758388292d4d15e
 URL:		http://github.com/jgoerzen/offlineimap
-BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov >= 4.1-13
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

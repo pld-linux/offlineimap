@@ -1,0 +1,26 @@
+diff -ur offlineimap-6.3.2.orig/docs/Makefile offlineimap-6.3.2/docs/Makefile
+--- offlineimap-6.3.2.orig/docs/Makefile	2011-03-02 11:13:33.977469001 +0100
++++ offlineimap-6.3.2/docs/Makefile	2011-03-02 11:16:37.837469002 +0100
+@@ -5,8 +5,8 @@
+ HTML_TARGETS = $(patsubst %.rst,%.html,$(SOURCES))
+ 
+ RM = rm
+-RST2HTML=`type rst2html 2>/dev/null 2>&1 && echo rst2html || echo rst2html.py`
+-RST2MAN=`type rst2man 2>/dev/null 2>&1 && echo rst2man || echo rst2man.py`
++RST2HTML=rst2html
++RST2MAN=rst2man
+ 
+ all: html
+ 
+diff -ur offlineimap-6.3.2.orig/Makefile offlineimap-6.3.2/Makefile
+--- offlineimap-6.3.2.orig/Makefile	2011-03-02 11:13:33.977469001 +0100
++++ offlineimap-6.3.2/Makefile	2011-03-02 11:15:26.037469002 +0100
+@@ -18,7 +18,7 @@
+ VERSION=6.3.2
+ TARGZ=offlineimap_$(VERSION).tar.gz
+ SHELL=/bin/bash
+-RST2HTML=`type rst2html 2>/dev/null 2>&1 && echo rst2html || echo rst2html.py`
++RST2HTML=rst2html
+ 
+ all: build
+ 

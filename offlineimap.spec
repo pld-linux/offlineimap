@@ -1,13 +1,15 @@
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	6.3.1
+Version:	6.3.2
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	%{name}-%{version}.tar.gz
-# Source0-md5:	eee9d1562990b1f4597561b665048de4
+# Source0-md5:	6e3def82d6d57ab8168a34ac4ec0a7b8
+Patch0:		%{name}-docs.patch
 URL:		https://github.com/nicolas33/offlineimap/
+BuildRequires:	docutils
 BuildRequires:	rpm-pythonprov >= 4.1-13
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -35,6 +37,11 @@ połączenia.
 
 %prep
 %setup -q
+%patch0 -p1
+
+%build
+%{__make} doc
+%{__make} man
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -44,15 +51,17 @@ python ./setup.py install \
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -type f -name "*.py" | xargs rm
 
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
+install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc FAQ.html UPGRADING offlineimap.conf*
+%doc Changelog.html readme.html offlineimap.conf* docs/{FAQ,INSTALL,UPGRADE}.html
 %attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/offlineimap.1*
 %{py_sitescriptdir}/%{name}
 %{py_sitescriptdir}/*.egg-info

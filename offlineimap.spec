@@ -1,16 +1,21 @@
+%bcond_with	doc
+#
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	6.3.3
+Version:	6.3.4
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	%{name}-%{version}.tar.gz
-# Source0-md5:	51479d3359ea65b09fb9e8cfa5ad025a
+# Source0-md5:	d08f6d19058da01c4ab7a9cb5d9e730b
 Patch0:		%{name}-docs.patch
 URL:		https://github.com/nicolas33/offlineimap/
-BuildRequires:	docutils
 BuildRequires:	rpm-pythonprov >= 4.1-13
+%if %{with doc}
+BuildRequires:	docutils
+BuildRequires:	sphinx-pdg
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,8 +45,10 @@ połączenia.
 %patch0 -p1
 
 %build
+%if %{with doc}
 %{__make} doc
 %{__make} man
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -50,18 +57,23 @@ python ./setup.py install \
 	--root=$RPM_BUILD_ROOT
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -type f -name "*.py" | xargs rm
-
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}
+
+%if %{with doc}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install %{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changelog.html readme.html offlineimap.conf* docs/{FAQ,INSTALL,UPGRADE}.html
-%attr(755,root,root) %{_bindir}/*
+%doc offlineimap.conf*
+%if %{with doc}
+%doc Changelog.html readme.html docs/{FAQ,INSTALL,UPGRADE}.html
 %{_mandir}/man1/offlineimap.1*
+%endif
+%attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/%{name}
 %{py_sitescriptdir}/*.egg-info

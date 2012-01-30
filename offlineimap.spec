@@ -1,21 +1,22 @@
-%bcond_with	doc
+%bcond_without	doc
 #
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	6.3.4
+Version:	6.5.2
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
-Source0:	%{name}-%{version}.tar.gz
-# Source0-md5:	d08f6d19058da01c4ab7a9cb5d9e730b
+Source0:	http://github.com/downloads/spaetz/%{name}/%{name}-v%{version}.tar.gz
+# Source0-md5:	0ccb6b7e4723a414ea50abb27450a56f
 Patch0:		%{name}-docs.patch
-URL:		https://github.com/nicolas33/offlineimap/
+URL:		https://offlineimap.org
 BuildRequires:	rpm-pythonprov >= 4.1-13
 %if %{with doc}
 BuildRequires:	docutils
 BuildRequires:	sphinx-pdg
 %endif
+Suggests:	python-sqlite
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +42,7 @@ bez obsługi IMAP, z kiepską obsługą IMAP albo nie działającego bez
 połączenia.
 
 %prep
-%setup -q
+%setup -q -n spaetz-offlineimap-091272d
 %patch0 -p1
 
 %build
@@ -71,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc offlineimap.conf*
 %if %{with doc}
-%doc Changelog.html readme.html docs/{FAQ,INSTALL,UPGRADE}.html
+%doc Changelog.html readme.html docs/FAQ.html docs/INSTALL.html docs/MANUAL.html docs/UPGRADE.html
 %{_mandir}/man1/offlineimap.1*
 %endif
 %attr(755,root,root) %{_bindir}/*

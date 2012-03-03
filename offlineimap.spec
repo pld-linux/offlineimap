@@ -3,12 +3,12 @@
 Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
-Version:	6.5.2
+Version:	6.5.2.1
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://github.com/downloads/spaetz/%{name}/%{name}-v%{version}.tar.gz
-# Source0-md5:	0ccb6b7e4723a414ea50abb27450a56f
+# Source0-md5:	fd87752605eb8d98d7addc70a8e96576
 Patch0:		%{name}-docs.patch
 URL:		https://offlineimap.org
 BuildRequires:	rpm-pythonprov >= 4.1-13
@@ -42,7 +42,7 @@ bez obsługi IMAP, z kiepską obsługą IMAP albo nie działającego bez
 połączenia.
 
 %prep
-%setup -q -n spaetz-offlineimap-091272d
+%setup -q -n %{name}
 %patch0 -p1
 
 %build

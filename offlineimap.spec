@@ -7,8 +7,8 @@ Version:	6.5.4
 Release:	1
 License:	GPL v2
 Group:		Applications/Mail
-Source0:	http://github.com/downloads/spaetz/%{name}/%{name}-v%{version}.tar.gz
-# Source0-md5:	f696978785ecfc804271ec25100ef929
+Source0:	http://github.com/OfflineIMAP/%{name}/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
+# Source0-md5:	d9ef4374b72235fb431a27ff4ca7f7fe
 Patch0:		%{name}-docs.patch
 URL:		https://offlineimap.org
 BuildRequires:	rpm-pythonprov >= 4.1-13
@@ -42,7 +42,7 @@ bez obsługi IMAP, z kiepską obsługą IMAP albo nie działającego bez
 połączenia.
 
 %prep
-%setup -q -n spaetz-offlineimap-c9e9690
+%setup -q
 %patch0 -p1
 
 %build

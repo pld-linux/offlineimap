@@ -4,7 +4,7 @@ Summary:	Mailboxes synchronization tool
 Summary(pl.UTF-8):	Narzędzie do synchroniczacji skrzynek pocztowych
 Name:		offlineimap
 Version:	6.6.0
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Mail
 Source0:	http://github.com/OfflineIMAP/%{name}/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
@@ -14,7 +14,7 @@ URL:		https://offlineimap.org
 BuildRequires:	rpm-pythonprov >= 4.1-13
 %if %{with doc}
 BuildRequires:	docutils
-BuildRequires:	sphinx-pdg
+BuildRequires:	sphinx-pdg-2
 %endif
 Suggests:	python-sqlite
 BuildArch:	noarch
@@ -47,7 +47,7 @@ połączenia.
 
 %build
 %if %{with doc}
-%{__make} -C docs
+%{__make} -C docs SPHINXBUILD=%{_bindir}/sphinx-build-2
 %endif
 
 %install

@@ -12,6 +12,7 @@ Source0:	http://github.com/OfflineIMAP/%{name}/archive/v%{version}.tar.gz?/%{nam
 Patch0:		%{name}-docs.patch
 URL:		https://offlineimap.org
 BuildRequires:	rpm-pythonprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with doc}
 BuildRequires:	docutils
 BuildRequires:	sphinx-pdg-2
@@ -52,9 +53,7 @@ połączenia.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python ./setup.py install \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -type f -name "*.py" | xargs rm
 install %{name}.py $RPM_BUILD_ROOT%{_bindir}/%{name}

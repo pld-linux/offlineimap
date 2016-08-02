@@ -17,7 +17,7 @@ BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	docutils
 BuildRequires:	sphinx-pdg-2
 %endif
-Suggests:	python-sqlite
+Requires:	python-modules-sqlite
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
